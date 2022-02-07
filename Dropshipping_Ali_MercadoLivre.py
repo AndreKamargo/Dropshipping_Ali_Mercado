@@ -9,6 +9,7 @@ Valor = input("Qual o valor do produto em dolares? (xxxx,xx): ")
 Valor = Valor.replace(",",".")
 Valor = float(Valor) * 5.25
 Dolar = Valor
+Continuar =""
 
 
 Despacho = Valor + 15.00
@@ -21,31 +22,83 @@ TotalImposto = Valor + 15 + Premium + 30
 
 
 print("\nTaxas:")
-print("Valor do produto em reais: ",real(Dolar))
-print("Despacho -R$15 = ",real(Despacho))
-print("Caso taxado, taxa maxima de 60% = ",real(Taxado))
-print("ICMS de SP 18% = ",real(ICMS))
-print("Mercado Premium 16% = ",real(Premium))
-print("Frete gratis -R$30 = ",real(Frete))
+print("Valor do produto em reais: R$",real(Dolar))
+print("Despacho -R$15: R$",real(Despacho))
+print("Caso taxado, taxa maxima de 60%: R$",real(Taxado))
+print("ICMS de SP 18%: R$",real(ICMS))
+print("Mercado Premium 16%: R$",real(Premium))
+print("Frete gratis -R$30: R$",real(Frete))
 if Valor < 120:
     Menor = Valor + 5
     Total = Total + 5
     TotalImposto = TotalImposto + 5
-    print("Valor abaixo de 120 -R$5 = ",real(Menor))
-    print("\nValor final = ", real(Total))
-    print("Valor final sem impostos = ",real(TotalImposto))
+    print("Valor abaixo de 120 -R$5: R$",real(Menor))
+    print("\nValor final = R$", real(Total))
+    print("Valor final sem impostos = R$",real(TotalImposto))
 else:
     print("\nValor final = ",real(Total))
-    print("Valor final sem impostos = ", real(TotalImposto))
+    print("Valor final sem impostos = R$", real(TotalImposto))
 
 Deseja = input("\nQual valor deseja vender (xxx,xx)? ")
-Deseja = Deseja.replace(",",".")
+Deseja = Deseja.replace(",", ".")
 Deseja = float(Deseja)
-LucroImposto = Deseja-Total
-Lucro = Deseja-TotalImposto
+LucroImposto = Deseja - Total
+Lucro = Deseja - TotalImposto
 
-print("\nLucro com impostos é ",real(LucroImposto))
-print("Lucro sem impostos é ",real(Lucro))
+print("\nLucro com impostos é: R$", real(LucroImposto))
+print("Lucro sem impostos é: R$", real(Lucro))
+
+while Continuar != "s":
+    Continuar = input("\nConfirmar valor? (s)Sim (n)Não  ").lower()
+
+    if Continuar == "s":
+        break
+    elif Continuar == "n":
+        Deseja = input("\nQual valor deseja vender (xxx,xx)? ")
+        Deseja = Deseja.replace(",", ".")
+        Deseja = float(Deseja)
+        LucroImposto = Deseja - Total
+        Lucro = Deseja - TotalImposto
+        print("\nLucro com impostos é: R$", real(LucroImposto))
+        print("Lucro sem impostos é: R$", real(Lucro))
+        continue
+
+
+    else:
+        print("Digite (s)Sim (n)Não")
+
+Salvar = input("\nSalvar pesquisa? (s)Sim (n)Não ").lower()
+
+if Salvar == "n":
+    print("")
+elif Salvar == "s":
+    x = open(Nome + ".txt","w")
+    print("Produto: ",Nome,file=open(Nome + ".txt","a"))
+    print("Preço em Dolar: $",Valor,file=open(Nome + ".txt","a"))
+    print("\nTaxas:", file=open(Nome + ".txt", "a"))
+    print("Valor do produto em reais: R$", real(Dolar), file=open(Nome + ".txt", "a"))
+    print("Despacho -R$15: R$ ", real(Despacho), file=open(Nome + ".txt", "a"))
+    print("Caso taxado, taxa maxima de 60%: R$ ", real(Taxado), file=open(Nome + ".txt", "a"))
+    print("ICMS de SP 18%: R$ ", real(ICMS), file=open(Nome + ".txt", "a"))
+    print("Mercado Premium 16%: R$ ", real(Premium), file=open(Nome + ".txt", "a"))
+    print("Frete gratis -R$30: R$ ", real(Frete), file=open(Nome + ".txt", "a"))
+    if Valor < 120:
+        print("Valor abaixo de 120 -R$5: R$", real(Menor), file=open(Nome + ".txt", "a"))
+        print("\nValor final: R$", real(Total), file=open(Nome + ".txt", "a"))
+        print("Valor final sem impostos: R$", real(TotalImposto), file=open(Nome + ".txt", "a"))
+    else:
+        print("\nValor final: R$", real(Total), file=open(Nome + ".txt", "a"))
+        print("Valor final sem impostos: R$", real(TotalImposto), file=open(Nome + ".txt", "a"))
+    print("\nVendendo por: R$",real(Deseja), file=open(Nome + ".txt", "a"))
+    print("\nLucro com impostos é: R$", real(LucroImposto), file=open(Nome + ".txt", "a"))
+    print("Lucro sem impostos é: R$", real(Lucro), file=open(Nome + ".txt", "a"))
+
+
+
+
+
+
+
 
 
 
