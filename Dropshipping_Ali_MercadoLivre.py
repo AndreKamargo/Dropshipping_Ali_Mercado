@@ -11,6 +11,7 @@ Valor = input("Qual o valor do produto em dolares? (xxxx,xx): ")
 Valor = Valor.replace(",",".")
 Valor = float(Valor) * 5.25
 Dolar = Valor
+DolarPrint = Valor/5.25
 Continuar =""
 Despacho = Valor + 15.00
 Taxado = (Valor*60)/100
@@ -79,9 +80,11 @@ Salvar = input("\nSalvar pesquisa? (s)Sim (n)Não ").lower()
 if Salvar == "n":
     print("")
 elif Salvar == "s":
+    Site = input("Qual o site do Alibaba? ")
     x = open(Nome + ".txt","w")
     print("Produto: ",Nome,file=open(Nome + ".txt","a"))
-    print("Preço em Dolar: $",Valor,file=open(Nome + ".txt","a"))
+    print("Url: ",Site,file=open(Nome + ".txt","a"))
+    print("Preço em Dolar: $",DolarPrint,file=open(Nome + ".txt","a"))
     print("\nTaxas:", file=open(Nome + ".txt", "a"))
     print("Valor do produto em reais: R$", real(Dolar), file=open(Nome + ".txt", "a"))
     print("Despacho -R$15: R$ ", real(Despacho), file=open(Nome + ".txt", "a"))
